@@ -80,6 +80,7 @@ mode === MODE.LOGIN
             className="ring-2 ring-gray-300 rounded-md p-4"/>
         </div>
         ): null}
+        {mode ===MODE.LOGIN && <div className="text-sm underline cursor-pointer"onClick={()=>setMode(MODE.RESET_PASSWORD)}>Forgot Password?</div>}
         <button 
           className="bg-black text-white p-2 rounded-md disabled:bg-white disabled:cursor-not-allowed" 
           disabled={isLoading}
@@ -89,9 +90,23 @@ mode === MODE.LOGIN
         {error && <div className="text-red-600 ">{error}</div>}
         {mode === MODE.LOGIN && (
         <div 
-          className="" 
+          className="text-sm underline cursor-pointer" 
           onClick = {()=>setMode(MODE.REGISTER)}>
           {"Don't"} have an account?</div>)}
+
+          {mode === MODE.REGISTER && (
+        <div 
+          className="text-sm underline cursor-pointer" 
+          onClick = {()=>setMode(MODE.LOGIN)}>
+          Have an account?</div>)}
+
+          {mode === MODE.RESET_PASSWORD && (
+        <div 
+          className="text-sm underline cursor-pointer" 
+          onClick = {()=>setMode(MODE.LOGIN)}>
+          Go back to login</div>)}
+
+          {message && <div className="text-green-600 text-sm">{message}</div>}
       </form>
     </div>
   )

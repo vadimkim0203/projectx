@@ -12,7 +12,7 @@ const nextConfig = {
       },
       {
         protocol:"https", 
-        hostname:"www.fromwhere.co.kr/", 
+        hostname:"www.fromwhere.co.kr", 
       },
   ]
   }
