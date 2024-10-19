@@ -41,9 +41,14 @@ mode === MODE.LOGIN
 
 const handleSubmit = async (e: any) => {
   e.preventDefault();
-  console.log('hello froj submit', username, email, password)
 
-  await axios.post('https://projectx-backend-six.vercel.app/api/user/register', {
+  setIsLoading(true);
+
+
+  const URL = 'https://projectx-backend-six.vercel.app/api/user/'
+  const url_method = mode === MODE.LOGIN ? "login" : "register" 
+
+  await axios.post(URL + url_method, {
     username: username,
     email: email,
     password: password
@@ -53,10 +58,25 @@ const handleSubmit = async (e: any) => {
     setUsername('')
     setEmail('')
     setPassword('')
+    setMode(MODE.LOGIN)
+    setMessage("Registration successful!");
   })
   .catch(function (error) {
     console.log(error);
+    setError("Something went wrong. Please try again.");
+  })
+  
+  .finally(() => {
+    setIsLoading(false);
   });
+}
+
+if (isLoading) {
+  return (
+    <div className="h-[calc(100vh-80px)] flex items-center justify-center">
+      <div className="w-8 h-8 border-4 border-gray-300 border-t-transparent rounded-full animate-spin"></div>
+    </div>
+  );
 }
 
   return (
@@ -77,7 +97,7 @@ const handleSubmit = async (e: any) => {
         ) : null}
         {mode !== MODE.EMAIL_VERIFICATION ? (
           <div className="flex flex-col gap-2">
-          <label className="text-sm text-gray-700">Email</label>
+          <label className="text-sm text-gray-700">Username or Email Address</label>
           <input 
             type="email" 
             name="email" 
