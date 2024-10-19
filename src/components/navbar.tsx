@@ -22,7 +22,7 @@ const Navbar = () => {
         {/* LEFT */}
         <div className='w-1/3 xl:w-1/2 flex items-center gap-12'>
           <Link href="/" className="flex items-center gap-3">
-            <Image src="/icons/shoppingCart.png" alt="" width={24} height={24}/>
+            <Image src="/icons/cart.png" alt="" width={24} height={24}/>
             <div className='text-2xl tracking-wide'>TROVE
             </div>
           </Link>
