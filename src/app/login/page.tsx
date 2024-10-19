@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react";
+import axios from 'axios';
 
 enum MODE {
   LOGIN="LOGIN",
@@ -13,6 +14,7 @@ enum MODE {
 const LoginPage = () => {
 
 const [mode,setMode] = useState(MODE.LOGIN)
+const [username, setUsername] = useState("")
 const [email, setEmail] = useState("")
 const [password, setPassword] = useState("")
 const [isLoading, setIsLoading] = useState(false)
@@ -35,11 +37,31 @@ mode === MODE.LOGIN
 ? "Register" 
 : mode === MODE.RESET_PASSWORD 
 ? "Reset" 
-: "Verify"; 
+: "Verify";
+
+const handleSubmit = async (e: any) => {
+  e.preventDefault();
+  console.log('hello froj submit', username, email, password)
+
+  await axios.post('https://projectx-backend-six.vercel.app/api/user/register', {
+    username: username,
+    email: email,
+    password: password
+  })
+  .then(function (response) {
+    console.log(response);
+    setUsername('')
+    setEmail('')
+    setPassword('')
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+}
 
   return (
     <div className="h-[calc(100vh-80px)] px-4 md:px-8 lg:px-16 xl:32 2xl:px-64 flex items-center justify-center">
-      <form className="flex flex-col gap-8">
+      <form className="flex flex-col gap-8" onSubmit={handleSubmit}>
         <h1 className="text-2xl font-semibold">{formTitle}</h1>
         {mode === MODE.REGISTER ? (
           <div className="flex flex-col gap-2">
@@ -48,7 +70,9 @@ mode === MODE.LOGIN
               type="text" 
               name="username" 
               placeholder="John" 
-              className="ring-2 ring-gray-300 rounded-md p-4"/>
+              className="ring-2 ring-gray-300 rounded-md p-4"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}/>
           </div>
         ) : null}
         {mode !== MODE.EMAIL_VERIFICATION ? (
@@ -58,7 +82,10 @@ mode === MODE.LOGIN
             type="email" 
             name="email" 
             placeholder="example@gmail.com" 
-            className="ring-2 ring-gray-300 rounded-md p-4"/>
+            className="ring-2 ring-gray-300 rounded-md p-4"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}/>
+            
         </div>
         ) : (
         <div className="flex flex-col gap-2">
@@ -77,7 +104,9 @@ mode === MODE.LOGIN
             type="password" 
             name="password" 
             placeholder="Enter your password" 
-            className="ring-2 ring-gray-300 rounded-md p-4"/>
+            className="ring-2 ring-gray-300 rounded-md p-4"
+            value={password}
+            onChange={(e)=>setPassword(e.target.value)}/>
         </div>
         ): null}
         {mode ===MODE.LOGIN && <div className="text-sm underline cursor-pointer"onClick={()=>setMode(MODE.RESET_PASSWORD)}>Forgot Password?</div>}

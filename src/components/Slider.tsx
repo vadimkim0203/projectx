@@ -7,27 +7,27 @@ import { useEffect, useState } from "react";
 const slides = [
   {
     id: 1, 
-    title: "What goes around comes around", 
-    description: "Website introduction" , 
-    img: "https://images.pexels.com/photos/7709139/pexels-photo-7709139.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2", 
+    title: "Trove - Uncover Your Style Treasure", 
+    description: "" , 
+    img: "https://media.endclothing.com/end-features/f_auto,q_auto:eco,w_1520/prodfeatures/Zw0dgoF3NbkBXZ4E_14-10-24_WinterEditorial_FeaturesLandscape_EB03.jpg?auto=format,compress", 
     url: "/",
-    bg: "bg-gradient-to-r from-yellow-50 to-pink-50"
+    bg: "bg-gradient-to-r from-gray-50 to-black-50"
   },
   {
     id: 2, 
-    title: "What why when", 
-    description: "Website introduction" , 
-    img: "https://www.pexels.com/photo/people-working-at-the-office-8867259/", 
+    title: "Trove - Uncover Your Style Treasure", 
+    description: "" , 
+    img: "https://www.fromwhere.co.kr/web/upload/NNEditor/20240823/E1848EE185ACE1848CE185A9E186BC11.jpg", 
     url: "/",
-    bg: "bg-gradient-to-r from-yellow-50 to-pink-50"
+    bg: "bg-gradient-to-r from-gray-50 to-black-50"
   },
   {
     id: 3, 
-    title: "What why when", 
-    description: "Website introduction" , 
-    img: "https://www.pexels.com/photo/people-working-at-the-office-8867259/", 
+    title: "Trove - Uncover Your Style Treasure", 
+    description: "" , 
+    img: "https://media.endclothing.com/end-features/f_auto,q_auto:eco,w_1520/prodfeatures/Zw0dgYF3NbkBXZ4C_14-10-24_WinterEditorial_FeaturesLandscape_EB02.jpg?auto=format,compress", 
     url: "/",
-    bg: "bg-gradient-to-r from-yellow-50 to-pink-50"
+    bg: "bg-gradient-to-r from-gray-50 to-black-50"
   }
 
 ];
@@ -54,7 +54,7 @@ const Slider = () => {
               <h2 className="text-xl lg:text-3xl 2xl:text-5xl">{slide.description}</h2>
               <h1 className="text-5xl lg:text-6xl 2xl:text-8xl font-semibold">{slide.title}</h1>
               <Link href={slide.url}>
-                <button className="rounded-md bg-black text-white py-3 px-4">Shop now</button>
+                <button className="rounded-md bg-black text-white text-sm py-1 px-10">Shop now</button>
               </Link>
             </div>
             {/* IMAGE CONTAINER */}

@@ -12,7 +12,11 @@ const nextConfig = {
       },
       {
         protocol:"https", 
-        hostname:"www.fromwhere.co.kr", 
+        hostname:"www.fromwhere.co.kr",
+      },
+      {
+        protocol:"https", 
+        hostname:"media.endclothing.com",
       },
   ]
   }
