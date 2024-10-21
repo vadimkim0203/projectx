@@ -15,7 +15,7 @@ const SinglePage = () => {
       <div className="w-full lg:w-1/2 flex flex-col gap-6">
         <h1 className="text-4xl font-medium">Product Name</h1>
         <p className="text-gray-500">
-          The Salomon ACS Pro GORE-TEX technical sneaker is the perfect companion on the trail, particularly in the wetter months thanks to its waterproof membrane. The Agile Chassis System provides game-changing stability, and the brand's Quicklace system means you're ready to go in a flash.
+          The Salomon ACS Pro GORE TEX technical sneaker is the perfect companion on the trail, particularly in the wetter months thanks to its waterproof membrane. The Agile Chassis System provides game changing stability, and the brands Quicklace system means you re ready to go in a flash.
         </p>
         <div className="h-[2px] bg-gray-100"/>
         <div className="flex items-center gap-4">
