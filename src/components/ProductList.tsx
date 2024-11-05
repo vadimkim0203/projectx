@@ -6,13 +6,18 @@ import axios from 'axios';
 import { useEffect, useState } from "react";
 
 const ProductList = () => {
-  const [productData, setProductData] = useState([]);
+  const [productData, setProductData] = useState<any[]>([]);
 
   useEffect(() => {
     const fetchProductData = async () => {
-      await axios.post('https://projectx-backend-supabase.vercel.app/api/products/all', {}).then(function (response) {
-        setProductData(response.data)
-      })
+      try {
+        await axios.post('https://projectx-backend-supabase.vercel.app/api/products/all', {}).then(function (response) {
+          setProductData(response.data)
+        })
+      } catch (error) {
+        console.error('Error', error);
+      }
+      
     }
 
     fetchProductData();
@@ -26,6 +31,7 @@ const ProductList = () => {
                 <div className="relative w-full h-80">
                   <Image 
                     src={product.image_url[0]}
+                    alt=""
                     fill sizes="25vw" 
                     className="absolute object-cover rounded-md z-10 hover:opacity-0 transition-opacity duration-500"
                   />
