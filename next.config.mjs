@@ -18,6 +18,10 @@ const nextConfig = {
         protocol:"https", 
         hostname:"media.endclothing.com",
       },
+      {
+        protocol:"https", 
+        hostname:"mcfomdkwxjsnyyfremvl.supabase.co",
+      }
   ]
   }
 };
