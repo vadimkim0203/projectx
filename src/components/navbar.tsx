@@ -3,6 +3,7 @@ import Menu from "./menu";
 import Image from "next/image";
 import SearchBar from "./SearchBar";
 import NavIcons from "./NavIcons";
+import About from "./AboutPage";
 
 const Navbar = () => {
 
@@ -27,11 +28,11 @@ const Navbar = () => {
             </div>
           </Link>
           <div className='hidden xl:flex gap-4'>
-            <Link href="/">Homepage</Link>
+            <Link href="/homepage">Homepage</Link>
             <Link href="/">Shop</Link>
             <Link href="/">Deals</Link>
-            <Link href="/">About</Link>
-            <Link href="/">Contact</Link>
+            <Link href="/about">About</Link>
+            <Link href="/contact">Contact</Link>
           </div>
         </div>
         {/* RIGHT */}

@@ -31,10 +31,13 @@ const NavIcons = () => {
         <div className='mt-2 cursor-pointer'>Logout</div>
       </div>} 
       <Image src="/icons/notification.png" alt="" width={22} height={22} className="cursor-pointer"/>
-      <div className='relative cursor-pointer'>
 
-     
-        <Image src="/icons/cart.png" alt="" width={22} height={22} onClick={() => setIsCartOpen((prev) => !prev)}/>
+      <div className='relative cursor-pointer' onClick={() => setIsCartOpen((prev) => !prev)}>
+        <Image src="/icons/cart.png" 
+          alt="" 
+          width={22} 
+          height={22} 
+          />
         {/* change the color lama later in tailwind css file */}
         <div className='absolute -top-4 -right-4 w-6 h-6 bg-[#f35c7a] rounded-full text-white text-sm flex items-center justify-center'>2</div>
       </div>
