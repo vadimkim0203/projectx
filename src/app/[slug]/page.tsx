@@ -28,7 +28,7 @@ const SinglePage = () => {
       <div className="text-sm">
         <h4 className="font-medium mb-4">Sizing</h4>
         <p className="">
-          Model is 6ft 2in/1.88m, with a 37.5''/94cm chest, a 36''/91cm waist, and is wearing a size Medium
+          Model is 6ft 2in/1.88m, with a 37.5&apos;/94cm chest, a 36&apos;/91cm waist, and is wearing a size Medium
         </p>
       </div>
 
