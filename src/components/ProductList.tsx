@@ -14,9 +14,7 @@ export const ProductList = () => {
   useEffect(() => {
     const fetchProductData = async () => {
       try {
-        // Simulating a loading delay
-        await new Promise((resolve) => setTimeout(resolve, 1500));
-
+      
         // Fetch product data
         const response = await axios.post('https://projectx-backend-supabase.vercel.app/api/products/all', {});
         setProductData(response.data);
@@ -41,7 +39,7 @@ export const ProductList = () => {
       ) : (
         // Show product data once it's fetched
         productData && productData.map((product) => (
-          <Link key={product.id} href={`/${product.id}`} className="w-full flex flex-col gap-4 sm:w-[45%] lg:w-[22%]">
+          <Link key={product.id} href={`/product/${product.id}`} className="w-full flex flex-col gap-4 sm:w-[45%] lg:w-[22%]">
             <div className="relative w-full h-80">
               <Image 
                 src={product.image_url[0]}
