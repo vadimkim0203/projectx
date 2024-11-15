@@ -5,7 +5,7 @@ import * as bcrypt from "bcrypt";
 import { User } from "@prisma/client";
 import axios from 'axios';
 
-export const authOptions : AuthOptions = {
+const authOptions : AuthOptions = {
     pages: {
         signIn: '/login'
     },
