@@ -1,6 +1,5 @@
 import NextAuth, { AuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { User } from "@prisma/client";
 import axios from 'axios';
 
 const authOptions : AuthOptions = {
@@ -28,27 +27,14 @@ const authOptions : AuthOptions = {
                     password: credentials?.password
                 })
 
-                console.log('ssssss',user)
-
                 if (!user.data.emailVerified) {
-                    console.log('please verify email')
                     return null;
                 }
 
                 return user.data;
             }
         })
-    ],
-    callbacks: {
-        async jwt({token, user}) {
-            if (user) token.user = user as User;
-            return token;
-        },
-        async session({token, session}) {
-            session.user = token.user;
-            return session;
-        }
-    }
+    ]
 }
 
 const handler = NextAuth(authOptions);
