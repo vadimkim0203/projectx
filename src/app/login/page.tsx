@@ -121,8 +121,6 @@ const LoginPage = () => {
       password: values.password
     })
 
-    console.log('sss', result)
-
     formLogin.reset({ email: '', password: '' })
   }
 
