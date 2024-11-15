@@ -25,17 +25,17 @@ export const authOptions : AuthOptions = {
             },
             async authorize(credentials) {
 
-                const user = await axios.post('http://localhost:8000/api/user/login', {
+                const user = await axios.post('https://projectx-backend-supabase.vercel.app/api/user/login', {
                     email: credentials?.username,
                     password: credentials?.password
                 })
+
+                console.log('ssssss',user)
 
                 if (!user.data.emailVerified) {
                     console.log('please verify email')
                     return null;
                 }
-
-                console.log('llo', user.data)
 
                 return user.data;
             }
