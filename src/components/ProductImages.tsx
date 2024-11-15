@@ -6,8 +6,8 @@ import { useState } from "react";
 
 const images = [
   { 
-  id: 1, 
-  url: "https://media.endclothing.com/media/f_auto,q_auto:eco,w_1024/prodmedia/media/catalog/product/1/9/19-09-24-LS_L47599500_1_1.jpg", 
+  id: "1eebaa10-4fd4-4fa0-acea-11121b0a7ef8", 
+  url: "https://mcfomdkwxjsnyyfremvl.supabase.co/storage/v1/object/public/Products'%20photos/photo_2024-11-05%2012.43.21.jpeg", 
   }, 
   { 
     id: 2, 

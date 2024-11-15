@@ -29,7 +29,9 @@ const Add = () => {
           {quantity}
           <button className="cursor-pointerpointer text-xl" onClick={() => handleQuantity("i")}>+</button>
         </div>
-        <div className="text-xs">5 Items in stock</div>
+        {/* no need to show the stock qties below */}
+        {/* <div className="text-xs">5 Items in stock</div>  */} 
+    
       </div>
       <button className="w-36 text-sm rounded-3xl ring-1 ring-black bg-black text-white py-2 px-4 hover:bg-white hover:text-black disabled:cursor-not-allowed disabled:bg-black disabled:text-white disabled:ring-none ">Add to Cart</button>
       </div>

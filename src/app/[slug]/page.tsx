@@ -26,23 +26,23 @@ const SinglePage = () => {
       <Add/>
       <div className="h-[2px] bg-gray-100"/>
       <div className="text-sm">
-        <h4 className="font-medium mb-4">Title</h4>
+        <h4 className="font-medium mb-4">Sizing</h4>
         <p className="">
-          If for some reason you are not happy with your purchase you can return it to us within 30 days for an exchange or refund.
+          Model is 6ft 2in/1.88m, with a 37.5''/94cm chest, a 36''/91cm waist, and is wearing a size Medium
+        </p>
+      </div>
+
+      <div className="text-sm">
+        <h4 className="font-medium mb-4">Shipping</h4>
+        <p className="">
+          Here needs to make a logic based on a user authentication. If logged in and provided the information regarding the shipping address, then show all shippig possibilities.
         </p>
       </div>
 
       <div className="text-sm">
         <h4 className="font-medium mb-4">Title</h4>
         <p className="">
-          If for some reason you are not happy with your purchase you can return it to us within 30 days for an exchange or refund.
-        </p>
-      </div>
-
-      <div className="text-sm">
-        <h4 className="font-medium mb-4">Title</h4>
-        <p className="">
-          If for some reason you are not happy with your purchase you can return it to us within 30 days for an exchange or refund.
+          Extra field for refund information 
         </p>
       </div>
       </div>
