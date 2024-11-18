@@ -4,7 +4,8 @@ import axios from 'axios';
 
 export const authOptions : AuthOptions = {
     pages: {
-        signIn: '/login'
+        signIn: '/login',
+        signOut: '/login'
     },
     providers: [
         CredentialsProvider({
