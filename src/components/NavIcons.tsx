@@ -1,8 +1,7 @@
 "use client"
 
 import Image from "next/image"
-import Link from "next/link";
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import CartModal from "./CartModal";
 import {
@@ -13,15 +12,33 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog"
 
-import { useSession } from "next-auth/react";
+
+import { signOut, useSession } from "next-auth/react";
 
 const NavIcons = () => {
   const { data: session } = useSession();
 
   const [isCartOpen, setIsCartOpen] = useState(false)
 
+  const [isLogoutDialogOpen, setIsLogoutDialogOpen] = useState(false);
+
   const router = useRouter()
+
+  const handleLogout = async () => {
+    const result = await signOut();
+  }
 
   return (
     <div className='flex items-center gap-4 xl:gap-6 relative'>
@@ -33,12 +50,30 @@ const NavIcons = () => {
               <DropdownMenuLabel>My Account</DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuItem onClick={() => router.push('/profile')}>Profile</DropdownMenuItem>
-              <DropdownMenuItem onClick={() => router.push('/api/auth/signout')}>Logout</DropdownMenuItem>
+              <DropdownMenuItem onClick={() => setIsLogoutDialogOpen(true)}>
+                Logout
+              </DropdownMenuItem>
             </>
           ) : (
             <DropdownMenuItem onClick={() => router.push('/login')}>Login</DropdownMenuItem>
           )}
         </DropdownMenuContent>
+
+        <AlertDialog open={isLogoutDialogOpen} onOpenChange={setIsLogoutDialogOpen}>
+          {/* <AlertDialogTrigger>Open</AlertDialogTrigger> */}
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <AlertDialogTitle>Logout</AlertDialogTitle>
+              <AlertDialogDescription>
+                Are you sure you want to logout?
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+              <AlertDialogCancel onClick={() => setIsLogoutDialogOpen(false)}>Cancel</AlertDialogCancel>
+              <AlertDialogAction onClick={() => handleLogout()}>Continue</AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
       </DropdownMenu>
 
       <Image src="/icons/notification.png" alt="" width={22} height={22} className="cursor-pointer"/>
