@@ -21,8 +21,9 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-  AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+
 
 
 import { signOut, useSession } from "next-auth/react";
@@ -43,7 +44,19 @@ const NavIcons = () => {
   return (
     <div className='flex items-center gap-4 xl:gap-6 relative'>
       <DropdownMenu>
-        <DropdownMenuTrigger><Image src="/icons/profile.png" alt="" width={22} height={22} className="cursor-pointer"/></DropdownMenuTrigger>
+        <DropdownMenuTrigger>
+          
+            <Avatar>
+              {session && session.user ? (
+                <>
+                  <AvatarImage src={session.user.image!} />
+                  <AvatarFallback>{session.user.name?.trim().split(' ').slice(0, 2).map(word => word[0].toUpperCase()).join('')}</AvatarFallback>
+                </>
+              ) : (
+                <AvatarImage src="/icons/profile.png" />
+              )}
+            </Avatar>
+        </DropdownMenuTrigger>
         <DropdownMenuContent className="mt-2 shadow-[0_3px_10px_rgb(0,0,0,0.2)]" onCloseAutoFocus={(e) => e.preventDefault()}>
           {session && session.user ? (
             <>

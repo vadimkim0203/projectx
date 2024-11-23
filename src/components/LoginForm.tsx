@@ -24,6 +24,7 @@ import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { useRouter } from 'next/navigation';
 import { useToast } from '@/hooks/use-toast';
+import Image from 'next/image';
 
 const formLoginSchema = z.object({
     email: z
@@ -63,7 +64,20 @@ export const LoginForm = () => {
             })
             return
         }
-        router.push('/')
+
+        router.replace('/');
+    }
+
+    const handleGoogleSignIn = async () => {
+        await signIn('google', {
+            callbackUrl: 'http://localhost:3000'
+        })
+    }
+
+    const handleAppleSignIn = async () => {
+        toast({
+            description: "Coming soon!"
+        })
     }
 
     return (
@@ -75,40 +89,62 @@ export const LoginForm = () => {
             </CardDescription>
             </CardHeader>
             <Form {...formLogin}>
-            <form onSubmit={formLogin.handleSubmit(onLoginSubmit)} className="space-y-2">
-                <CardContent className="space-y-2">
-                <FormField
-                    control={formLogin.control}
-                    name="email"
-                    render={({ field }) => (
-                    <FormItem>
-                        <FormLabel>Email</FormLabel>
-                        <FormControl>
-                        <Input placeholder="name@example.com" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                    </FormItem>
-                    )}
-                />
-                <FormField
-                    control={formLogin.control}
-                    name="password"
-                    render={({ field }) => (
-                    <FormItem>
-                        <FormLabel>Password</FormLabel>
-                        <FormControl>
-                        <Input type="password" placeholder="Enter Password" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                    </FormItem>
-                    )}
-                />
-                </CardContent>
-                <CardFooter>
-                <Button type="submit">Submit</Button>
-                </CardFooter>
-            </form>
+                <form onSubmit={formLogin.handleSubmit(onLoginSubmit)} className="space-y-2">
+                    <CardContent className="space-y-2">
+                        <FormField
+                            control={formLogin.control}
+                            name="email"
+                            render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Email</FormLabel>
+                                <FormControl>
+                                <Input placeholder="name@example.com" {...field} />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={formLogin.control}
+                            name="password"
+                            render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Password</FormLabel>
+                                <FormControl>
+                                <Input type="password" placeholder="Enter Password" {...field} />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                            )}
+                        />
+                    </CardContent>
+                    <CardFooter>
+                        <Button type="submit" className="w-full">Submit</Button>
+                    </CardFooter>
+                </form>
             </Form>
+            <CardContent className='space-y-2'>
+
+                <div className="relative">
+                    <div className="absolute inset-0 flex items-center">
+                    <span className="w-full border-t" />
+                    </div>
+                    <div className="relative flex justify-center text-xs uppercase">
+                    <span className="bg-background px-2 text-muted-foreground">
+                        Or continue with
+                    </span>
+                    </div>
+                </div>
+
+            </CardContent>
+            <CardFooter className='gap-2'>
+                <Button variant="outline" onClick={() => handleGoogleSignIn()} className="w-full">
+                    <Image src="/icons/google-icon.svg" alt="" width={22} height={22} className="cursor-pointer"/> Google
+                </Button>
+                <Button variant="outline" onClick={() => handleAppleSignIn()} className="w-full">
+                    <Image src="/icons/apple-icon.svg" alt="" width={22} height={22} className="cursor-pointer"/> Apple
+                </Button>
+            </CardFooter>
         </Card>
     )
 }
